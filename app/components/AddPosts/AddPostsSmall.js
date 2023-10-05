@@ -4,6 +4,7 @@
 
 import { useState } from "react";
 import React from "react";
+import PostAdded from "../Alerts/PostAdded";
 
 const AddPost = ({addPost}) => {
   const [newPostObject, setNewPostObject] = useState({
@@ -15,10 +16,12 @@ const AddPost = ({addPost}) => {
     likes: 0,
   });
 
+  const [success, setSuccess] = useState(null)
 
 
   return (
     <div className="bg-slate-200 rounded-md w-96 px-2 py-2 m-2 border-2 border-slate-300 fixed right-[20px] bottom-[20px] z-10">
+    {success && <PostAdded />}
       <h2 className="text-xl text-slate-700">COMPOSE</h2>
       <form className="flex flex-col items-center" onSubmit={(event) => {
         event.preventDefault();
