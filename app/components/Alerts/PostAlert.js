@@ -1,9 +1,9 @@
 import React from 'react'
 
-const PostAlert = ({message}) => {
+const PostAlert = () => {
   return (
-    <div className='bg-green-500 absolute top-[275px] w-36 text-center rounded-md h-[82px]'>
-        <p>{message}</p>
+    <div className='bg-green-500 absolute bottom-0 w-36 text-center rounded-md h-[82px]'>
+        <p>Post posted!</p>
     </div>
   )
 }

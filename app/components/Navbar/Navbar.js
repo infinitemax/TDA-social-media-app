@@ -10,16 +10,12 @@ const Navbar = () => {
   const [allPosts, setAllPosts] = useState([])
 
   const addPostHandler = (post) => {
-
-    const allFields = post.title && post.content && post.image && post.name
-
-    if (!allFields) {
-      alert("Fill out all fields")
-    } else {
+  
       setAllPosts([...allPosts, post])
+      
       // add localstore bit
       localStorage.setItem("allPosts", JSON.stringify([...allPosts, post]))
-    }
+    
 
   }
 

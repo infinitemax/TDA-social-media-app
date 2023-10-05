@@ -5,6 +5,7 @@
 import { useState } from "react";
 import React from "react";
 import PostAlert from "../Alerts/PostAlert";
+import PostFail from "../Alerts/PostFail";
 
 const AddPost = ({ addPost }) => {
   const [newPostObject, setNewPostObject] = useState({
@@ -26,7 +27,6 @@ const AddPost = ({ addPost }) => {
     newPostObject.image &&
     newPostObject.name;
 
-
   return (
     <div className="bg-slate-200 rounded-md w-96 px-2 py-2 m-2 border-2 border-slate-300 fixed right-[20px] bottom-[20px] z-10">
       <h2 className="text-xl text-slate-700">COMPOSE</h2>
@@ -35,8 +35,11 @@ const AddPost = ({ addPost }) => {
         onSubmit={(event) => {
           event.preventDefault();
           if (!formFields) {
-            setFailure(true)
-            setMessage("Make sure to fill out all the boxes!")
+            setFailure(true);
+            setMessage("Make sure to fill out all the boxes!");
+            setTimeout(() => {
+              setFailure(false);
+            }, 2000)
             console.log("hello");
           } else {
             console.log(newPostObject);
@@ -50,7 +53,7 @@ const AddPost = ({ addPost }) => {
               likes: "",
             });
             setSuccess(true);
-            setMessage("Post posted!")
+            setMessage("Post posted!");
             setTimeout(() => {
               setSuccess(null);
             }, 2000);
@@ -106,10 +109,8 @@ const AddPost = ({ addPost }) => {
           }}
           value={newPostObject.image}
         ></input>
-        {success && <PostAlert 
-          message={message}
-
-          />}
+        {success && <PostAlert message={message} />}
+        {failure && <PostFail message={message} />}
         <button className="bg-slate-300 rounded-md py-2 px-4 mt-6 text-lg  border-2 border-slate-400 text-slate-900 z-10">
           Submit!
         </button>
