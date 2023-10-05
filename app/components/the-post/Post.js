@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 export default function Post
 
@@ -12,4 +12,5 @@ export default function Post
     <p className="">{content}</p>
     <p className="">{likes}</p>
 </div>
+
 }

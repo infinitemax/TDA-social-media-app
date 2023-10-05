@@ -34,6 +34,7 @@ const AddPost = ({addPostInParent}) => {
               title: event.target.value
             })
           }}
+          value={newPostObject.title}
         ></input>
         <input
           type="text"
@@ -45,6 +46,7 @@ const AddPost = ({addPostInParent}) => {
               name: event.target.value
             })
           }}
+          value={newPostObject.name}
         ></input>
         <textarea
           type="text"
@@ -57,6 +59,7 @@ const AddPost = ({addPostInParent}) => {
               content: event.target.value
             })
           }}
+          value={newPostObject.content}
         ></textarea>
         <input
           type="text"
@@ -68,6 +71,7 @@ const AddPost = ({addPostInParent}) => {
               image: event.target.value
             })
           }}
+          value={newPostObject.image}
         >
 
         </input>
