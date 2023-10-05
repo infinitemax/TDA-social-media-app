@@ -1,10 +1,10 @@
 'use client'
-import { useState } from "react";
 
+export default function Post
 
-const Post = ({name, title, content, image, likes}) => {
+({name, title, content, image, likes}) {
 
-<div>
+<div className="bg-red-500 h-screen w-screen">
     <h2 className="">{name}</h2>
     <img className="" src={image}/>
     <h3 className="">{title}</h3>
@@ -12,6 +12,3 @@ const Post = ({name, title, content, image, likes}) => {
     <p className="">{likes}</p>
 </div>
 }
-
-
-

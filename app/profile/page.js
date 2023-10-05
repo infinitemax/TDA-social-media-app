@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Post from "../components/the-post/Post"   
 
 export default function Profile() {
   const user = {
@@ -108,6 +109,13 @@ export default function Profile() {
 
   return (
     <section className="p-2 h-full w-screen bg-blue-300 pt-20 sm:pt-20 md:pt-10">
+      <Post
+      name = "user"
+      image = "image"
+      content = "hello"
+      title = "title"
+      likes = {0}
+      />
       <div className="flex justify-center mt-6 md:mt-16 mb-8 font-semibold">
         <h1>{user.name}</h1> {console.log(user)}
       </div>
