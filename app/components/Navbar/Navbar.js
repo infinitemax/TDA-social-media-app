@@ -25,8 +25,8 @@ const Navbar = () => {
 
 
   return (
-    <div className=" w-full p-2 bg-blue-400">
-      <ul className="flex justify-between">
+    <div className="fixed w-full p-2 bg-blue-400 z-20">
+      <ul className="flex justify-between items-center mx-6 sm:mx-16 md:mx-32">
         <li>
           <Link className="font-semibold" href="/">
             Home

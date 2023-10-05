@@ -18,7 +18,7 @@ const AddPost = ({addPost}) => {
 
 
   return (
-    <div className="bg-slate-200 rounded-md w-96 px-2 py-2 m-2 border-2 border-slate-300 fixed right-[20px] bottom-[20px]">
+    <div className="bg-slate-200 rounded-md w-96 px-2 py-2 m-2 border-2 border-slate-300 fixed right-[20px] bottom-[20px] z-10">
       <h2 className="text-xl text-slate-700">COMPOSE</h2>
       <form className="flex flex-col items-center" onSubmit={(event) => {
         event.preventDefault();
