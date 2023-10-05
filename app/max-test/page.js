@@ -1,8 +1,11 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import AddPost from '../components/AddPosts/AddPost'
-import TestPost from "../components/max-test-components/testPost"
+import TestPost from "../components/max-test-components/TestPost"
+import Footer from "../components/Footer/Footer"
+import AddPostsSmall from "../components/AddPosts/AddPostsSmall"
+import PopUp from "../components/AddPosts/PopUp"
 
 export default function Home() {
 
@@ -10,24 +13,36 @@ export default function Home() {
   const [allPosts, setAllPosts] = useState([])
 
   const addPostHandler = (post) => {
-    setAllPosts([...allPosts, post])
-    console.log("hello")
 
-    // add localstore bit
-    localStorage.setItem("allPosts", JSON.stringify([...allPosts, post]))
+    const allFields = post.title && post.content && post.image && post.name
+
+    if (!allFields) {
+      alert("Fill out all fields")
+    } else {
+      setAllPosts([...allPosts, post])
+      // add localstore bit
+      localStorage.setItem("allPosts", JSON.stringify([...allPosts, post]))
+    }
+
   }
 
+  useEffect(() => {
+    setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
+  }, []);
 
   return (
-    <main>
+    <>
+    <main className="flex min-h-screen flex-col items-center">
     <h1>The basic page...</h1>
 
-    <div>
+    <div className="flex gap-4 flex-wrap p-4">
       {allPosts.map(post => {
+
         return (
           <TestPost 
-            name={post.name}
-          />
+            {...post}
+            key={post.id}
+          /> 
         )
       })}
     </div>
@@ -42,6 +57,25 @@ export default function Home() {
         }
       }
     />
+
+    {/* <AddPostsSmall 
+        addPostInParent={
+        (post) => {
+          addPostHandler(post);
+        }
+      }
+    /> */}
+
+    <PopUp 
+      addPostInParent={
+        (post) => {
+          addPostHandler(post);
+        }
+      }
+    />
+
+    <Footer />
     </main>
+    </>
   )
 }
