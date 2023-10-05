@@ -5,7 +5,7 @@
 import { useState } from "react";
 import React from "react";
 
-const AddPost = ({addPostInParent}) => {
+const AddPost = ({addPost}) => {
   const [newPostObject, setNewPostObject] = useState({
     id: 0,
     title: "",
@@ -15,19 +15,21 @@ const AddPost = ({addPostInParent}) => {
     likes: 0,
   });
 
+
+
   return (
-    <div className="bg-slate-200 rounded-md w-96 px-6 py-4 m-2 border-2 border-slate-300">
-      <h2 className="text-3xl text-slate-700 mb-4">COMPOSE</h2>
+    <div className="bg-slate-200 rounded-md w-96 px-2 py-2 m-2 border-2 border-slate-300 fixed right-[20px] bottom-[20px]">
+      <h2 className="text-xl text-slate-700">COMPOSE</h2>
       <form className="flex flex-col items-center" onSubmit={(event) => {
         event.preventDefault();
         console.log(newPostObject)
-        addPostInParent({...newPostObject, id: Math.floor(Math.random() * 1000)});
+        addPost({...newPostObject, id: Math.floor(Math.random() * 1000)});
         setNewPostObject({id: "", title: "", content: "", name: "", likes: ""})
       }}>
         <input
           type="text"
           placeholder="Post title"
-          className="p-2 rounded-md my-2 w-full border-2 border-slate-300"
+          className="p-2 rounded-md my-2 w-full border-2 border-slate-300 text-sm"
           onChange={(event) => {
             setNewPostObject({
               ...newPostObject,
@@ -38,7 +40,7 @@ const AddPost = ({addPostInParent}) => {
         <input
           type="text"
           placeholder="Your name"
-          className="p-2 rounded-md my-2 w-full border-2 border-slate-300"
+          className="p-2 rounded-md my-2 w-full border-2 border-slate-300 text-sm"
           onChange={(event) => {
             setNewPostObject({
               ...newPostObject,
@@ -48,9 +50,9 @@ const AddPost = ({addPostInParent}) => {
         ></input>
         <textarea
           type="text"
-          rows="5"
+          rows="2"
           placeholder="Your post"
-          className="p-2 rounded-md my-2 w-full border-2 border-slate-300"
+          className="p-2 rounded-md my-2 w-full border-2 border-slate-300 text-sm"
           onChange={(event) => {
             setNewPostObject({
               ...newPostObject,
@@ -61,7 +63,7 @@ const AddPost = ({addPostInParent}) => {
         <input
           type="text"
           placeholder="Image url"
-          className="p-2 rounded-md my-2 w-full border-2 border-slate-300"
+          className="p-2 rounded-md my-2 w-full border-2 border-slate-300 text-sm"
           onChange={(event) => {
             setNewPostObject({
               ...newPostObject,
