@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-
 import AddPost from '../components/AddPosts/AddPost'
 import TestPost from "../components/max-test-components/TestPost"
 import Footer from "../components/Footer/Footer"

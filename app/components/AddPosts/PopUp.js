@@ -16,7 +16,7 @@ const PopUp = ({addPostInParent}) => {
     <div className='App'>
         {isOpen && <AddPostsSmall
             addPost={(post) => {
-                addPostHandler(post);
+                addPostInParent(post);
             }} />}
         <button className='bg-slate-400 p-4 rounded-md' onClick={toggle}>Compose?</button>
     </div>

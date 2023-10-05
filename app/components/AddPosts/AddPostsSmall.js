@@ -5,7 +5,7 @@
 import { useState } from "react";
 import React from "react";
 
-const AddPost = ({addPostInParent}) => {
+const AddPost = ({addPost}) => {
   const [newPostObject, setNewPostObject] = useState({
     id: 0,
     title: "",
@@ -23,7 +23,7 @@ const AddPost = ({addPostInParent}) => {
       <form className="flex flex-col items-center" onSubmit={(event) => {
         event.preventDefault();
         console.log(newPostObject)
-        addPostInParent({...newPostObject, id: Math.floor(Math.random() * 1000)});
+        addPost({...newPostObject, id: Math.floor(Math.random() * 1000)});
         setNewPostObject({id: "", title: "", content: "", name: "", likes: ""})
       }}>
         <input
