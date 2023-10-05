@@ -6,6 +6,7 @@ import Footer from "../components/Footer/Footer"
 import AddPostsSmall from "../components/AddPosts/AddPostsSmall"
 import PopUp from "../components/AddPosts/PopUp"
 
+
 export default function Home() {
 
 
