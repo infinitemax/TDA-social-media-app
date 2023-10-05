@@ -12,19 +12,19 @@ export default function Home() {
 
   const [allPosts, setAllPosts] = useState([])
 
-  const addPostHandler = (post) => {
+  // const addPostHandler = (post) => {
 
-    const allFields = post.title && post.content && post.image && post.name
+  //   const allFields = post.title && post.content && post.image && post.name
 
-    if (!allFields) {
-      alert("Fill out all fields")
-    } else {
-      setAllPosts([...allPosts, post])
-      // add localstore bit
-      localStorage.setItem("allPosts", JSON.stringify([...allPosts, post]))
-    }
+  //   if (!allFields) {
+  //     alert("Fill out all fields")
+  //   } else {
+  //     setAllPosts([...allPosts, post])
+  //     // add localstore bit
+  //     localStorage.setItem("allPosts", JSON.stringify([...allPosts, post]))
+  //   }
 
-  }
+  // }
 
   useEffect(() => {
     setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
@@ -50,13 +50,13 @@ export default function Home() {
   
 
 
-    <AddPost 
+    {/* <AddPost 
       addPostInParent={
         (post) => {
           addPostHandler(post);
         }
       }
-    />
+    /> */}
 
     {/* <AddPostsSmall 
         addPostInParent={
@@ -66,13 +66,13 @@ export default function Home() {
       }
     /> */}
 
-    <PopUp 
+    {/* <PopUp 
       addPostInParent={
         (post) => {
           addPostHandler(post);
         }
       }
-    />
+    /> */}
 
     <Footer />
     </main>

@@ -24,7 +24,7 @@ const AddPost = ({addPost}) => {
         event.preventDefault();
         console.log(newPostObject)
         addPost({...newPostObject, id: Math.floor(Math.random() * 1000)});
-        setNewPostObject({id: "", title: "", content: "", name: "", likes: ""})
+        setNewPostObject({id: "", title: "", content: "", name: "", image: "", likes: ""})
       }}>
         <input
           type="text"
@@ -36,6 +36,7 @@ const AddPost = ({addPost}) => {
               title: event.target.value
             })
           }}
+          value={newPostObject.title}
         ></input>
         <input
           type="text"
@@ -47,6 +48,7 @@ const AddPost = ({addPost}) => {
               name: event.target.value
             })
           }}
+          value={newPostObject.name}
         ></input>
         <textarea
           type="text"
@@ -59,6 +61,7 @@ const AddPost = ({addPost}) => {
               content: event.target.value
             })
           }}
+          value={newPostObject.content}
         ></textarea>
         <input
           type="text"
@@ -70,6 +73,7 @@ const AddPost = ({addPost}) => {
               image: event.target.value
             })
           }}
+          value={newPostObject.image}
         >
 
         </input>
