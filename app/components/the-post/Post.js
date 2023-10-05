@@ -4,6 +4,7 @@ export default function Post
 
 ({name, title, content, image, likes}) {
 
+    return (
 
 <div className="bg-blue-200 h-screen w-screen flex-col justify-center items-center">
     <h2 className="text-left p-3 font-bold justify-center items-center font-serif">{name}</h2>
@@ -13,4 +14,4 @@ export default function Post
     <p className="text-sm text-right font-bold text-blue-700 justify-center items-center font-serif">{likes}</p>
 </div>
 
-}
+)}
