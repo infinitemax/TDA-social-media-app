@@ -1,8 +1,8 @@
 "use client"
 import { useState } from "react"
 
-import AddPost from '../components/AddPosts/AddPost'
-import TestPost from "../components/max-test-components/testPost"
+import AddPost from './components/AddPosts/AddPost'
+import TestPost from "./components/max-test-components/testPost"
 
 export default function Home() {
 
