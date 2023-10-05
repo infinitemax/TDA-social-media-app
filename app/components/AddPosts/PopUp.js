@@ -1,4 +1,4 @@
-//tried to add a pop up, not sure it will succeed!
+"use client"
 
 import React from 'react'
 import { useState } from "react"

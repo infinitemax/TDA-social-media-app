@@ -49,6 +49,8 @@ export default function Profile() {
     ],
   };
 
+
+
   return (
     <section className="p-2 h-screen bg-blue-300">
       <div className="flex justify-center m-[5%] font-semibold">
@@ -64,7 +66,7 @@ export default function Profile() {
       <div className="m-[5%] grid grid-cols-1 gap-[4%] sm:grid-cols-2 xl:grid-cols-4 text-center items-center items-middle">
         {user.posts.map((posts) => {
           return (
-              <div class="relative border-4 border-white rounded-2xl h-60 w-60 xl:h-96 xl:w-96">
+              <div className="relative border-4 border-white rounded-2xl h-60 w-60 xl:h-96 xl:w-96">
                 {posts.attributes.image && (
                   <div className="flex justify-center h-full w-full">
                     <img
@@ -74,11 +76,11 @@ export default function Profile() {
                   </div>
                 )}
                 <div
-                  class="overlay absolute inset-0 bg-black bg-opacity-50 text-white 
+                  className="overlay absolute inset-0 bg-black bg-opacity-50 text-white 
           opacity-0 hover:opacity-100 rounded-xl transition-opacity duration-300 flex 
           flex-col justify-center items-center"
                 >
-                  <h3 class="text-xl font-bold mb-2">
+                  <h3 className="text-xl font-bold mb-2">
                     {posts.attributes.title}
                   </h3>
                   <p>{posts.attributes.description}</p>
