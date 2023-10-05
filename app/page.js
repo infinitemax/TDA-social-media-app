@@ -13,7 +13,7 @@ export default function Home() {
           image="image"
           content="hello"
           title="title"
-          likes={0}
+          likes="0"
         />
 
         <TestPost 
