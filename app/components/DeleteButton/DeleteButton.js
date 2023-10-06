@@ -1,44 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const DeleteButton = (post) => {
-
-// const [deletion, setDeletion] = useState(null);
-
-const [allPosts, setAllPosts] = useState([])
-
-useEffect(() => {
-    setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
-  }, []);
-
-
-const deletePost = (postToDelete) => {
-  // find index of post to delete
-  // this line of code uses map to create an array of the names of each object in posts array
-  // then it applies indexOf to find the index of the post, which we can
-  // use to delete the item from the main array.
-
-  console.log(postToDelete)
-  console.log(allPosts)
-  
-  let indexToDelete = allPosts.map((item) => item.title).indexOf(postToDelete.post);
-
-
-  console.log(`we are about to delete ${allPosts[indexToDelete].title}`)
-  
-  allPosts.splice(indexToDelete, 1);
-
-  // // use setMovies to pass the post array back
-
-  setAllPosts([...allPosts]);
-
-  localStorage.setItem("allPosts", JSON.stringify([...allPosts]))
-
-  // display deletion message
-//   setDeletion('Entry has been deleted');
-//   setTimeout(() => {
-//     setDeletion(null)
-//   }, 2000)
+const DeleteButton = ({post, handleDeleteInParent}) => {
+const deletePost = (post) => {
+  handleDeleteInParent(post);
 };
 
 

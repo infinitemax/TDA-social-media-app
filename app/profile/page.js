@@ -67,23 +67,14 @@ export default function Profile() {
   const [deletion, setDeletion] = useState(null);
 
   const deletePost = (postToDelete) => {
-    // find index of movie to delete
-    // this line of code uses map to create an array of the names of each object in movies array
-    // then it applies indexOf to find the index of the movie, which we can
-    // use to delete the item from the main array.
-    let indexToDelete = allPosts
-      .map((item) => item.title)
-      .indexOf(postToDelete);
-  
-    console.log(`we are about to delete ${allPosts[indexToDelete].name}`)
-    
-    allPosts.splice(indexToDelete, 1);
-  
-    // // use setMovies to pass the movie array back
-  
-    setAllPosts([...allPosts]);
-  
-    localStorage.setItem("allPosts", JSON.stringify([...allPosts]))
+    setAllPosts(
+      allPosts.filter((post) => {
+        return post.title !== postToDelete;
+      })
+    );
+      const filtered = allPosts.filter(post => post.title !== postToDelete)
+      localStorage.setItem("allPosts", JSON.stringify(filtered))
+      setAllPosts(filtered)
   
     // display deletion message
     setDeletion('Entry has been deleted');
@@ -94,9 +85,15 @@ export default function Profile() {
 
 
 
+
   useEffect(() => {
     setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
   }, [])
+
+  // useEffect(() => {
+  //   localStorage.setItem("allPosts", JSON.stringify(allPosts))
+  // }, [allPosts])
+
 
   return (
     <section className="p-2 min-h-screen w-screen bg-blue-300 pt-20 sm:pt-20 md:pt-10">
