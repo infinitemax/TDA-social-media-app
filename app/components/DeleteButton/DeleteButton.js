@@ -1,34 +1,44 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const DeleteButton = (post, deleteIt) => {
+const DeleteButton = (post) => {
 
-const [deletion, setDeletion] = useState(null);
+// const [deletion, setDeletion] = useState(null);
+
+const [allPosts, setAllPosts] = useState([])
+
+useEffect(() => {
+    setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
+  }, []);
+
 
 const deletePost = (postToDelete) => {
-  // find index of movie to delete
-  // this line of code uses map to create an array of the names of each object in movies array
-  // then it applies indexOf to find the index of the movie, which we can
+  // find index of post to delete
+  // this line of code uses map to create an array of the names of each object in posts array
+  // then it applies indexOf to find the index of the post, which we can
   // use to delete the item from the main array.
-  let indexToDelete = allPosts
-    .map((item) => item.title)
-    .indexOf(postToDelete);
 
-  console.log(`we are about to delete ${allPosts[indexToDelete].name}`)
+  console.log(postToDelete)
+  console.log(allPosts)
+  
+  let indexToDelete = allPosts.map((item) => item.title).indexOf(postToDelete.post);
+
+
+  console.log(`we are about to delete ${allPosts[indexToDelete].title}`)
   
   allPosts.splice(indexToDelete, 1);
 
-  // // use setMovies to pass the movie array back
+  // // use setMovies to pass the post array back
 
   setAllPosts([...allPosts]);
 
   localStorage.setItem("allPosts", JSON.stringify([...allPosts]))
 
   // display deletion message
-  setDeletion('Entry has been deleted');
-  setTimeout(() => {
-    setDeletion(null)
-  }, 2000)
+//   setDeletion('Entry has been deleted');
+//   setTimeout(() => {
+//     setDeletion(null)
+//   }, 2000)
 };
 
 
@@ -37,7 +47,7 @@ const deletePost = (postToDelete) => {
     <div>
       <button
         className="py-2 px-4 rounded-md bg-slate-300 border-2 border-slate-400 w-12 mx-auto text-center"
-        onClick={() => deleteIt(post)}
+        onClick={() => deletePost(post)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
