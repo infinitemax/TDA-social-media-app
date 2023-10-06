@@ -50,7 +50,7 @@ const AddPost = ({ addPost }) => {
               content: "",
               name: "",
               image: "",
-              likes: "",
+              likes: 0,
             });
             setSuccess(true);
             setMessage("Post posted!");

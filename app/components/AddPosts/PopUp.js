@@ -13,12 +13,12 @@ const PopUp = ({addPostInParent}) => {
     }
 
   return (
-    <div className='App relative'>
+    <div className='App static'>
         {isOpen && <AddPostsSmall
             addPost={(post) => {
                 addPostInParent(post);
             }} />}
-        <button className='bg-slate-400 p-4 rounded-md' onClick={toggle}>
+        <button className='bg-slate-300 border-2 border-slate-400 p-4 rounded-md fixed bottom-10 right-10 z-10' onClick={toggle}>
         <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="1.5em"
