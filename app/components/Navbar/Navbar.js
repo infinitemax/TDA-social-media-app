@@ -2,12 +2,13 @@
 import React from "react";
 import Link from "next/link";
 import PopUp from "../AddPosts/PopUp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
 
 
   const [allPosts, setAllPosts] = useState([])
+
 
   const addPostHandler = (post) => {
   
@@ -15,10 +16,12 @@ const Navbar = () => {
       
       // add localstore bit
       localStorage.setItem("allPosts", JSON.stringify([...allPosts, post]))
-    
 
   }
 
+  useEffect(() => {
+    setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
+  }, []);
 
   return (
     <div className="fixed w-full p-2 bg-blue-400 z-20">
