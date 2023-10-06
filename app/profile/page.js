@@ -5,52 +5,50 @@ import PopUp from "../components/AddPosts/PopUp";
 
 
 export default function Profile() {
-  // const user = {
-  //   id: "",
-  //   name: "USERNAME",
-  //   picture: "https://media.tenor.com/WX8OXgN5VpMAAAAi/waving-wave-hello.gif",
-  //   posts: [
-  //     {
-  //       id: "1",
-  //       type: "Item",
-  //       attributes: {
-  //         title: "First post",
-  //         description: "OMG THIS IS MY FIRST POST",
-  //         image: "https://media.tenor.com/7SI7s743NmoAAAAC/evil-evil-laugh.gif",
-  //       },
-  //     },
-  //     {
-  //       id: "2",
-  //       type: "Item",
-  //       attributes: {
-  //         title: "Second post",
-  //         description: "OMG THIS IS MY SECOND POST",
-  //         image: "https://media.tenor.com/9fBgVWrDYs0AAAAi/run-busy.gif",
-  //       },
-  //     },
-  //     {
-  //       id: "3",
-  //       type: "Item",
-  //       attributes: {
-  //         title: "Third post",
-  //         description: "OMG THIS IS MY Third POST",
-  //         image:
-  //           "https://i.pinimg.com/originals/da/b8/e4/dab8e4a138086559babe755c745f0fb1.jpg",
-  //       },
-  //     },
-  //     {
-  //       id: "4",
-  //       type: "Item",
-  //       attributes: {
-  //         title: "Fourth post",
-  //         description:
-  //           "OMG THIS IS A REALLY LONG DESCRIPTION OMG THIS IS A REALLY LONG DESCRIPTION",
-  //         image:
-  //           "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-  //       },
-  //     }
-  //   ],
-  // };
+ 
+  const startingPosts = [
+    {
+      id: 1,
+      title: "Hello World",
+      content: "This is my first post!",
+      name: "Max",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/RedCat_8727.jpg/1200px-RedCat_8727.jpg",
+      likes: 0
+    },
+    {
+      id: 2,
+      title: "Hello World",
+      content: "Look into my eyes...",
+      name: "Max",
+      image: "https://hips.hearstapps.com/hmg-prod/images/neva-masquerade-royalty-free-image-1674509896.jpg?crop=0.611xw:1.00xh;0.196xw,0&resize=640:*",
+      likes: 0
+    },
+    {
+      id: 3,
+      title: "Arty cat",
+      content: "This cat knows where it's at",
+      name: "Max",
+      image: "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_16x9.jpg",
+      likes: 0
+    },
+    {
+      id: 4,
+      title: "Surprise!",
+      content: "Hi there, I'm a cat",
+      name: "Max",
+      image: "https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&quality=85&auto=format&fit=max&s=a52bbe202f57ac0f5ff7f47166906403",
+      likes: 0
+    },
+    {
+      id: 5,
+      title: "Purrrrr",
+      content: "What a cool looking tabby",
+      name: "Max",
+      image: "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg",
+      likes: 0
+    }
+  ]
+console.log('adding posts')
 
   const [allPosts, setAllPosts] = useState([])
 
@@ -85,9 +83,17 @@ export default function Profile() {
 
 
 
-
+  console.log('doing use effect')
+  
   useEffect(() => {
-    setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
+    // localStorage.setItem("allPosts", JSON.stringify([...allPosts, startingPosts]))
+    // setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
+    // setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || startingPosts);
+    if (localStorage.getItem("allPosts")) {
+      setAllPosts(JSON.parse(localStorage.getItem("allPosts")));
+    } else {
+      setAllPosts(startingPosts);
+    }
   }, [])
 
   // useEffect(() => {

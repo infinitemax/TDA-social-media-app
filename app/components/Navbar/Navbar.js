@@ -53,6 +53,7 @@ const Navbar = () => {
                 addPostHandler(post);
               }}
             /> */}
+            
           </div>
         </li>
       </ul>

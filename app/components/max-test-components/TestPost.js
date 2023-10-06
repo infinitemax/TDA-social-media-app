@@ -9,8 +9,7 @@ const TestPost = ({title, name, content, likes, image, deleteIt}) => {
   const [like, setLike] = useState(false)
   
   
-  
-  
+
   
   return (
     
