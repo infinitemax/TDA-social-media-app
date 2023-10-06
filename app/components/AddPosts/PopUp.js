@@ -13,7 +13,7 @@ const PopUp = ({addPostInParent}) => {
     }
 
   return (
-    <div className='App'>
+    <div className='App relative'>
         {isOpen && <AddPostsSmall
             addPost={(post) => {
                 addPostInParent(post);

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import CraigPosts from "../components/Cards/CraigPosts";
+import PopUp from "../components/AddPosts/PopUp";
 
 
 export default function Profile() {
@@ -51,14 +52,54 @@ export default function Profile() {
   //   ],
   // };
 
-  const [posts, setPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([])
+
+
+  const addPostHandler = (post) => {
+  
+      setAllPosts([...allPosts, post])
+      
+      // add localstore bit
+      localStorage.setItem("allPosts", JSON.stringify([...allPosts, post]))
+
+  }
+
+  const [deletion, setDeletion] = useState(null);
+
+  const deletePost = (postToDelete) => {
+    // find index of movie to delete
+    // this line of code uses map to create an array of the names of each object in movies array
+    // then it applies indexOf to find the index of the movie, which we can
+    // use to delete the item from the main array.
+    let indexToDelete = allPosts
+      .map((item) => item.title)
+      .indexOf(postToDelete);
+  
+    console.log(`we are about to delete ${allPosts[indexToDelete].name}`)
+    
+    allPosts.splice(indexToDelete, 1);
+  
+    // // use setMovies to pass the movie array back
+  
+    setAllPosts([...allPosts]);
+  
+    localStorage.setItem("allPosts", JSON.stringify([...allPosts]))
+  
+    // display deletion message
+    setDeletion('Entry has been deleted');
+    setTimeout(() => {
+      setDeletion(null)
+    }, 2000)
+  };
+
+
 
   useEffect(() => {
-    setPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
+    setAllPosts(JSON.parse(localStorage.getItem("allPosts")) || []);
   }, [])
 
   return (
-    <section className="p-2 h-full w-screen bg-blue-300 pt-20 sm:pt-20 md:pt-10">
+    <section className="p-2 min-h-screen w-screen bg-blue-300 pt-20 sm:pt-20 md:pt-10">
       {/* <div className="flex justify-center mt-6 md:mt-16 mb-8 font-semibold">
         <h1>{user.name}</h1> {console.log(user)}
       </div>
@@ -69,11 +110,20 @@ export default function Profile() {
           <li>{user.posts.length}</li> 
         </ul>
       </div> */}
-      <div className="flex flex-wrap gap-4">
-          {posts?.map((post) => {
-            return <CraigPosts {...post} key={post.id} />;
-          })}
-        </div>
+
+        <div className="mt-5 w-full flex justify-center flex-wrap gap-4 text-center items-middle">
+            {allPosts?.map((post) => {
+              return <CraigPosts 
+                {...post} 
+                key={post.id}
+                deleteIt={(name) => {
+                  deletePost(name);
+                }}
+              />;
+            })}
+              </div>
+
+
       {/* <div className=" mt-5 w-full flex justify-center flex-wrap gap-4 text-center items-middle">
         {user.posts.map((posts) => {
           return (
@@ -100,6 +150,12 @@ export default function Profile() {
           );
         })}
       </div> */}
+
+      <PopUp
+              addPostInParent={(post) => {
+                addPostHandler(post);
+              }}
+            />
     </section>
   );
 }
